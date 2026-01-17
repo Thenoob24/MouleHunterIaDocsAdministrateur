@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Administrateur - MouleHunter</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 3px solid #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+        
+        .metadata {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .metadata table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .metadata td {
+            padding: 8px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        .metadata td:first-child {
+            font-weight: bold;
+            width: 180px;
+            color: #34495e;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        h3 {
+            color: #34495e;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        thead {
+            background: #34495e;
+            color: white;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tbody tr:hover {
+            background: #f5f5f5;
+        }
+        
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .architecture-diagram {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            border-bottom: none;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .toc li {
+            padding: 5px 0;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        @media print {
+            body {
+                max-width: 100%;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+        
+        .btn-print {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .btn-print:hover {
+            background: #2980b9;
+        }
+        
+        @media print {
+            .btn-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimer / Exporter PDF</button>
+
+    <div class="header">
+        <h1>🐚 MOULEHUNTER</h1>
+        <div class="subtitle">Documentation Administrateur</div>
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em;">Intelligence Artificielle pour le jeu de la Pêche aux Moules</div>
+    </div>
+
+    <div class="metadata">
+        <table>
+            <tr>
+                <td>Projet</td>
+                <td>MouleHunter - IA de jeu stratégique</td>
+            </tr>
+            <tr>
+                <td>Version</td>
+                <td>1.0.0</td>
+            </tr>
+            <tr>
+                <td>Auteur</td>
+                <td>Constant BLASZYK</td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td>constant.blaszykpro@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Repository</td>
+                <td>https://github.com/Thenoob24/MouleHunter</td>
+            </tr>
+            <tr>
+                <td>Licence</td>
+                <td>MIT</td>
+            </tr>
+            <tr>
+                <td>Date de création</td>
+                <td>Janvier 2026</td>
+            </tr>
+            <tr>
+                <td>Langage</td>
+                <td>Python 3.8+</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="toc">
+        <h2>📋 Table des Matières</h2>
+        <ul>
+            <li><a href="#presentation">1. Présentation du Projet</a></li>
+            <li><a href="#architecture">2. Architecture Technique</a></li>
+            <li><a href="#prerequis">3. Prérequis Système</a></li>
+            <li><a href="#installation">4. Installation et Configuration</a></li>
+            <li><a href="#deploiement">5. Déploiement</a></li>
+            <li><a href="#utilisation">6. Guide d'Utilisation</a></li>
+            <li><a href="#algorithmes">7. Algorithmes et Stratégies</a></li>
+            <li><a href="#maintenance">8. Maintenance et Monitoring</a></li>
+            <li><a href="#troubleshooting">9. Dépannage</a></li>
+            <li><a href="#securite">10. Sécurité</a></li>
+            <li><a href="#performances">11. Optimisation des Performances</a></li>
+            <li><a href="#annexes">12. Annexes</a></li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="presentation">1. Présentation du Projet</h2>
+
+    <h3>1.1 Vue d'Ensemble</h3>
+    <p>
+        MouleHunter est une intelligence artificielle sophistiquée développée pour jouer au jeu compétitif de la "Pêche aux Moules". 
+        L'IA utilise des algorithmes de pathfinding avancés, notamment un parcours en largeur modifié (BFS), pour naviguer efficacement 
+        dans un environnement de type labyrinthe, collecter des moules et optimiser l'utilisation de bonus stratégiques.
+    </p>
+
+    <h3>1.2 Objectifs du Projet</h3>
+    <ul>
+        <li><strong>Performance compétitive :</strong> Développer une IA capable de rivaliser avec d'autres joueurs humains et artificiels</li>
+        <li><strong>Optimisation stratégique :</strong> Maximiser le score en optimisant les déplacements et l'utilisation des ressources</li>
+        <li><strong>Adaptabilité :</strong> S'adapter dynamiquement aux changements de l'environnement de jeu</li>
+        <li><strong>Efficacité algorithmique :</strong> Prendre des décisions en temps réel avec des calculs optimisés</li>
+    </ul>
+
+    <h3>1.3 Fonctionnalités Principales</h3>
+    
+    <h4>Intelligence Stratégique</h4>
+    <ul>
+        <li><strong>Pathfinding Optimisé :</strong> Algorithme BFS (Breadth-First Search) pour trouver les chemins les plus courts</li>
+        <li><strong>Gestion des Bonus :</strong> Utilisation intelligente des frites (🍟) et bières (🍺)</li>
+        <li><strong>Évaluation Dynamique :</strong> Comparaison des stratégies pour choisir la meilleure approche à chaque tour</li>
+    </ul>
+
+    <h4>Stratégies Avancées</h4>
+    <ul>
+        <li>Collecte prioritaire des moules à haute valeur</li>
+        <li>Optimisation du ratio distance/valeur</li>
+        <li>Anticipation des bonus disponibles sur le trajet</li>
+        <li>Mode exploration automatique lorsqu'aucune moule n'est visible</li>
+    </ul>
+
+    <h3>1.4 Système de Scoring</h3>
+    <div class="info">
+        <strong>Formule de Score :</strong>
+        <pre>Score = (Valeur_Moule × 10) + (Bonus_Collectés) - (Distance × 0.3) - (Ressources_Utilisées)</pre>
+        <p>Cette formule permet d'évaluer chaque objectif potentiel en tenant compte de multiples facteurs pour une décision optimale.</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="architecture">2. Architecture Technique</h2>
+
+    <h3>2.1 Structure du Projet</h3>
+    <pre>
+MouleHunter/
+│
+├── main.py                 # Point d'entrée principal de l'application
+├── .env                    # Configuration (non versionné, à créer)
+├── .example.env            # Template de configuration
+├── .gitignore             # Fichiers exclus du versioning
+├── _config.yml            # Configuration Jekyll (documentation web)
+├── README.md              # Documentation utilisateur
+├── LICENSE                # Licence MIT
+│
+├── .github/
+│   └── workflows/         # CI/CD GitHub Actions
+│
+└── docs/                  # Documentation complémentaire
+    </pre>
+
+    <h3>2.2 Composants Logiciels</h3>
+
+    <h4>2.2.1 Classe Labyrinthe</h4>
+    <p>Responsable du parsing et de la gestion de l'environnement de jeu :</p>
+    <ul>
+        <li>Parse les données reçues du serveur</li>
+        <li>Maintient la représentation de la grille de jeu</li>
+        <li>Gère les positions des joueurs et les états des cases</li>
+        <li>Identifie les murs, moules, et bonus</li>
+    </ul>
+
+    <h4>2.2.2 Classe IA</h4>
+    <p>Cerveau décisionnel du bot comportant :</p>
+    <ul>
+        <li><strong>Gestion d'Inventaire :</strong> Suivi en temps réel des frites et bières disponibles</li>
+        <li><strong>Algorithmes de Pathfinding :</strong>
+            <ul>
+                <li><code>parcourt_largeur_avec_frites()</code> - Navigation avec capacité de saut</li>
+                <li><code>parcourt_largeur_avec_biere()</code> - Navigation avec mouvements multiples</li>
+            </ul>
+        </li>
+        <li><strong>Évaluation :</strong> <code>evaluer_objectif()</code> pour scorer chaque cible potentielle</li>
+        <li><strong>Décision :</strong> <code>choisir_coup()</code> pour sélectionner le meilleur mouvement</li>
+    </ul>
+
+    <h3>2.3 Architecture Réseau</h3>
+    <div class="architecture-diagram">
+        <pre>
+┌─────────────────┐
+│  Serveur de Jeu │
+│   (TCP/IP)      │
+└────────┬────────┘
+         │
+         │ Socket Connection
+         │ (IP:PORT)
+         │
+         ▼
+┌─────────────────┐
+│  MouleHunter    │
+│     Client      │
+│                 │
+│  ┌───────────┐  │
+│  │ Labyrinthe│  │
+│  │  Parser   │  │
+│  └─────┬─────┘  │
+│        │        │
+│        ▼        │
+│  ┌───────────┐  │
+│  │    IA     │  │
+│  │  Engine   │  │
+│  └─────┬─────┘  │
+│        │        │
+│        ▼        │
+│  ┌───────────┐  │
+│  │ Decision  │  │
+│  │  Maker    │  │
+│  └───────────┘  │
+└─────────────────┘
+        </pre>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="prerequis">3. Prérequis Système</h2>
+
+    <h3>3.1 Configuration Matérielle Minimale</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Composant</th>
+                <th>Requis Minimum</th>
+                <th>Recommandé</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Processeur</td>
+                <td>1 GHz single-core</td>
+                <td>2 GHz dual-core ou plus</td>
+            </tr>
+            <tr>
+                <td>Mémoire RAM</td>
+                <td>512 MB</td>
+                <td>2 GB ou plus</td>
+            </tr>
+            <tr>
+                <td>Espace Disque</td>
+                <td>100 MB</td>
+                <td>500 MB</td>
+            </tr>
+            <tr>
+                <td>Réseau</td>
+                <td>Connexion internet stable</td>
+                <td>Connexion filaire avec faible latence</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.2 Logiciels Requis</h3>
+
+    <h4>3.2.1 Python</h4>
+    <ul>
+        <li><strong>Version :</strong> Python 3.8 ou supérieur</li>
+        <li><strong>Vérification :</strong> <code>python --version</code> ou <code>python3 --version</code></li>
+        <li><strong>Installation :</strong> <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
+    </ul>
+
+    <h4>3.2.2 Bibliothèques Python</h4>
+    <p>Le projet utilise uniquement les bibliothèques standard de Python :</p>
+    <ul>
+        <li><code>socket</code> - Communication réseau</li>
+        <li><code>os</code> - Gestion des variables d'environnement</li>
+        <li><code>collections</code> - Structures de données (deque pour BFS)</li>
+        <li><code>random</code> - Génération de mouvements aléatoires</li>
+    </ul>
+
+    <div class="success">
+        <strong>Avantage :</strong> Aucune dépendance externe à installer. Le projet fonctionne avec une installation Python standard.
+    </div>
+
+    <h3>3.3 Accès Réseau</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Paramètre</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Protocole</td>
+                <td>TCP/IP</td>
+            </tr>
+            <tr>
+                <td>Port</td>
+                <td>Configurable (défini dans .env)</td>
+            </tr>
+            <tr>
+                <td>Firewall</td>
+                <td>Autoriser les connexions sortantes vers le serveur de jeu</td>
+            </tr>
+            <tr>
+                <td>Latence</td>
+                <td>< 100ms recommandé pour une performance optimale</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2 id="installation">4. Installation et Configuration</h2>
+
+    <h3>4.1 Installation</h3>
+
+    <h4>4.1.1 Méthode 1 : Clone via Git</h4>
+    <pre>
+# Cloner le repository
+git clone https://github.com/Thenoob24/MouleHunter.git
+
+# Naviguer dans le dossier
+cd MouleHunter
+    </pre>
+
+    <h4>4.1.2 Méthode 2 : Téléchargement ZIP</h4>
+    <ol>
+        <li>Aller sur <code>https://github.com/Thenoob24/MouleHunter</code></li>
+        <li>Cliquer sur "Code" → "Download ZIP"</li>
+        <li>Extraire l'archive dans le dossier de votre choix</li>
+        <li>Ouvrir un terminal dans ce dossier</li>
+    </ol>
+
+    <h3>4.2 Configuration</h3>
+
+    <h4>4.2.1 Création du Fichier de Configuration</h4>
+    <pre>
+# Copier le template de configuration
+cp .example.env .env
+
+# Sous Windows :
+copy .example.env .env
+    </pre>
+
+    <h4>4.2.2 Paramètres de Configuration</h4>
+    <p>Éditer le fichier <code>.env</code> avec vos paramètres :</p>
+    <pre>
+# Configuration du serveur de jeu
+SERVEUR_IP=192.168.1.100
+SERVEUR_PORT=5555
+NOM_EQUIPE=MouleHunter_Team
+    </pre>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Paramètre</th>
+                <th>Description</th>
+                <th>Exemple</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>SERVEUR_IP</code></td>
+                <td>Adresse IP du serveur de jeu</td>
+                <td>192.168.1.100 ou localhost</td>
+            </tr>
+            <tr>
+                <td><code>SERVEUR_PORT</code></td>
+                <td>Port TCP du serveur</td>
+                <td>5555 (valeur typique)</td>
+            </tr>
+            <tr>
+                <td><code>NOM_EQUIPE</code></td>
+                <td>Nom d'identification de votre équipe</td>
+                <td>MouleHunter_Team</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning">
+        <strong>⚠️ Attention :</strong>
+        <ul>
+            <li>Le fichier <code>.env</code> ne doit PAS être versionné (il est dans .gitignore)</li>
+            <li>Assurez-vous que les paramètres IP et PORT correspondent à votre serveur de jeu</li>
+            <li>Le nom d'équipe doit être unique pour éviter les conflits</li>
+        </ul>
+    </div>
+
+    <h3>4.3 Vérification de l'Installation</h3>
+    <pre>
+# Vérifier la version Python
+python --version
+# ou
+python3 --version
+
+# Devrait afficher : Python 3.8.x ou supérieur
+
+# Lister les fichiers du projet
+ls -la
+# ou sous Windows :
+dir
+    </pre>
+
+    <h3>4.4 Structure de Fichiers Attendue</h3>
+    <p>Après installation et configuration, votre dossier devrait contenir :</p>
+    <pre>
+MouleHunter/
+├── main.py          ✓ Script principal
+├── .env             ✓ Votre configuration (créé)
+├── .example.env     ✓ Template
+├── README.md        ✓ Documentation
+├── LICENSE          ✓ Licence MIT
+└── docs/            ✓ Documentation supplémentaire
+    </pre>
+
+    <div class="page-break"></div>
+
+    <h2 id="deploiement">5. Déploiement</h2>
+
+    <h3>5.1 Déploiement Local</h3>
+
+    <h4>5.1.1 Lancement Simple</h4>
+    <pre>
+python main.py
+# ou si nécessaire :
+python3 main.py
+    </pre>
+
+    <h4>5.1.2 Vérification du Démarrage</h4>
+    <p>Un démarrage réussi affiche :</p>
+    <pre>
+🎮 Connecté → MouleHunter_Team (Joueur 0)
+En attente du début de la partie...
+    </pre>
+
+    <h3>5.2 Déploiement sur Serveur</h3>
+
+    <h4>5.2.1 Déploiement avec Screen (Linux)</h4>
+    <pre>
+# Créer une session screen
+screen -S moulehunter
+
+# Lancer l'application
+python3 main.py
+
+# Détacher la session : Ctrl+A puis D
+# Réattacher : screen -r moulehunter
+    </pre>
+
+    <h4>5.2.2 Déploiement avec tmux (Linux)</h4>
+    <pre>
+# Créer une session tmux
+tmux new -s moulehunter
+
+# Lancer l'application
+python3 main.py
+
+# Détacher : Ctrl+B puis D
+# Réattacher : tmux attach -t moulehunter
+    </pre>
+
+    <h4>5.2.3 Déploiement comme Service Systemd (Linux)</h4>
+    <p>Créer le fichier <code>/etc/systemd/system/moulehunter.service</code> :</p>
+    <pre>
+[Unit]
+Description=MouleHunter IA Bot
+After=network.target
+
+[Service]
+Type=simple
+User=votre_utilisateur
+WorkingDirectory=/chemin/vers/MouleHunter
+ExecStart=/usr/bin/python3 /chemin/vers/MouleHunter/main.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+    </pre>
+
+    <p>Commandes de gestion du service :</p>
+    <pre>
+# Recharger systemd
+sudo systemctl daemon-reload
+
+# Activer le service au démarrage
+sudo systemctl enable moulehunter
+
+# Démarrer le service
+sudo systemctl start moulehunter
+
+# Vérifier le statut
+sudo systemctl status moulehunter
+
+# Voir les logs
+sudo journalctl -u moulehunter -f
+    </pre>
+
+    <h3>5.3 Déploiement Docker (Optionnel)</h3>
+    <p>Créer un <code>Dockerfile</code> :</p>
+    <pre>
+FROM python:3.10-slim
+
+WORKDIR /app
+COPY . /app
+
+CMD ["python", "main.py"]
+    </pre>
+
+    <p>Construction et exécution :</p>
+    <pre>
+# Construire l'image
+docker build -t moulehunter .
+
+# Exécuter le conteneur
+docker run -d --name moulehunter-bot \
+    --env-file .env \
+    --restart unless-stopped \
+    moulehunter
+    </pre>
+
+    <div class="page-break"></div>
+
+    <h2 id="utilisation">6. Guide d'Utilisation</h2>
+
+    <h3>6.1 Lancement du Bot</h3>
+    <pre>
+python main.py
+    </pre>
+
+    <h3>6.2 Sortie Console Typique</h3>
+    <pre>
+🎮 Connecté → GodMoules2025 (Joueur 0)
+
+🎮 Tour à (5, 3) | 🍟 2 | 🍺 1
+🎯 Stratégie FRITES: 4 coups, 1 frites nécessaires
+   Bonus en route: 🍟 1 | 🍺 0
+🍟 UTILISE FRITE ! (reste 1)
+  → 🍟 +1 frite (total: 2)
+  → 🐚 +5 moules
+➡️  JOUE: Bs-N
+    </pre>
+
+    <h3>6.3 Interprétation des Messages</h3>
+
+    <h4>6.3.1 Messages de Connexion</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Message</th>
+                <th>Signification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>🎮 Connecté → Nom (Joueur X)</code></td>
+                <td>Connexion réussie, numéro de joueur assigné</td>
+            </tr>
+            <tr>
+                <td><code>En attente du début de la partie...</code></td>
+                <td>En attente d'autres joueurs ou du démarrage</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>6.3.2 Messages de Tour</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Élément</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>Tour à (x, y)</code></td>
+                <td>Position actuelle du bot</td>
+            </tr>
+            <tr>
+                <td><code>🍟 X</code></td>
+                <td>Nombre de frites disponibles</td>
+            </tr>
+            <tr>
+                <td><code>🍺 X</code></td>
+                <td>Nombre de bières disponibles</td>
+            </tr>
+            <tr>
+                <td><code>🎯 Stratégie XXX</code></td>
+                <td>Stratégie choisie (NORMALE, FRITES, BIERE)</td>
+            </tr>
+            <tr>
+                <td><code>➡️ JOUE: XXX</code></td>
+                <td>Mouvement effectué</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>6.4 Commandes et Mouvements Envoyés</h4>
+    <p>L'IA envoie des commandes au serveur sous forme de chaînes de caractères spécifiques. Voici les principaux formats :</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Commande</th>
+            <th>Description</th>
+            <th>Exemple</th>
+            <th>Coût / Effet</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>N</code> / <code>S</code> / <code>E</code> / <code>O</code></td>
+            <td>Mouvement cardinal normal (1 case)</td>
+            <td><code>N</code></td>
+            <td>1 tour</td>
+        </tr>
+        <tr>
+            <td><code>Bs-<dir></code></td>
+            <td>Utilise une frite pour sauter un mur dans la direction indiquée</td>
+            <td><code>Bs-N</code></td>
+            <td>1 frite + 1 tour</td>
+        </tr>
+        <tr>
+            <td><code>Bp-<seq></code></td>
+            <td>Utilise une bière pour effectuer jusqu'à 3 mouvements consécutifs</td>
+            <td><code>Bp-N-S-E</code></td>
+            <td>1 bière + 1 tour (3 cases)</td>
+        </tr>
+        <tr>
+            <td><code>C</code></td>
+            <td>Attente / Passer son tour (utilisé en mode exploration ou blocage)</td>
+            <td><code>C</code></td>
+            <td>1 tour perdu</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="info">
+        <strong>Note :</strong> Les séquences bière (<code>Bp-</code>) doivent être valides et ne pas traverser de mur sans frite. L'IA simule toujours les chemins avant envoi.
+    </div>
+
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="algorithmes">7. Algorithmes et Stratégies</h2>
+
+    <h3>7.1 Pathfinding Principal (BFS Modifié)</h3>
+    <p>L'algorithme central est un <strong>Breadth-First Search</strong> adapté aux contraintes du jeu :</p>
+    <ul>
+        <li>Prise en compte des <strong>coûts variables</strong> (1 tour normal vs saut frite vs combo bière)</li>
+        <li>État étendu : position + inventaire frites/bières restant</li>
+        <li>Arrêt anticipé dès qu'une cible viable est atteinte (moule ou bonus prioritaire)</li>
+        <li>Complexité : O(L × W × I) où L×W = taille labyrinthe, I = états inventaire (limité)</li>
+    </ul>
+
+    <h4>Variantes implémentées</h4>
+    <ul>
+        <li><code>parcourt_largeur_avec_frites()</code> : autorise un saut de mur si frite disponible</li>
+        <li><code>parcourt_largeur_avec_biere()</code> : simule des séquences de 2 ou 3 cases en un coup</li>
+        <li><code>exploration_aléatoire_pondérée()</code> : backup quand aucune cible n'est visible</li>
+    </ul>
+
+    <h3>7.2 Logique de Décision</h3>
+    <p>À chaque tour, l'IA :</p>
+    <ol>
+        <li>Parse la grille et met à jour l'inventaire</li>
+        <li>Identifie toutes les cibles visibles (moules + bonus)</li>
+        <li>Calcule pour chacune le score via <code>evaluer_objectif()</code></li>
+        <li>Choisit la cible avec le meilleur ratio <strong>valeur / coût estimé</strong></li>
+        <li>Simule le chemin optimal (avec ou sans bonus)</li>
+        <li>Envoie la commande correspondante</li>
+    </ol>
+
+    <div class="success">
+        <strong>Stratégies prioritaires (dans l'ordre) :</strong>
+        <ol>
+            <li>Collecte moule haute valeur avec bière si possible</li>
+            <li>Collecte moule + bonus sur le chemin</li>
+            <li>Utilisation frite pour atteindre moule isolée</li>
+            <li>Collecte bonus seul si moules non accessibles</li>
+            <li>Exploration intelligente</li>
+        </ol>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="maintenance">8. Maintenance et Monitoring</h2>
+
+    <h3>8.1 Mise à Jour du Code</h3>
+    <pre>
+# Aller dans le dossier du projet
+cd MouleHunter
+
+# Récupérer les dernières modifications
+git pull origin main
+
+# Relancer le bot
+python3 main.py
+        </pre>
+
+    <h3>8.2 Logs et Monitoring</h3>
+    <ul>
+        <li>Logs console très verbeux (position, inventaire, stratégie, coup joué)</li>
+        <li>Redirection recommandée :
+            <pre>python3 main.py >> logs/moulehunter_$(date +%Y%m%d_%H%M).log 2>&1</pre>
+        </li>
+        <li>Surveillance live :
+            <pre>tail -f logs/moule*.log</pre>
+        </li>
+        <li>Outils utiles : <code>htop</code>, <code>ss -tuln</code> (connexions), <code>journalctl -u moulehunter</code> (si systemd)</li>
+    </ul>
+
+    <h3>8.3 Sauvegarde Configuration</h3>
+    <p>Conservez toujours une copie de votre <code>.env</code> en lieu sûr (ne jamais le commiter).</p>
+
+    <div class="page-break"></div>
+
+    <h2 id="troubleshooting">9. Dépannage</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Problème</th>
+            <th>Cause probable</th>
+            <th>Solution</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Connection refused</td>
+            <td>Serveur non lancé / mauvais IP:port</td>
+            <td>Vérifier .env + démarrer le serveur + tester avec <code>telnet IP PORT</code></td>
+        </tr>
+        <tr>
+            <td>Déconnexions fréquentes / timeout</td>
+            <td>Latence réseau / firewall</td>
+            <td>Tester ping, utiliser connexion filaire, augmenter timeout si modifiable</td>
+        </tr>
+        <tr>
+            <td>IA reste immobile / envoie C en boucle</td>
+            <td>Aucune cible viable trouvée</td>
+            <td>Vérifier visibilité moules/bonus, relancer partie, debug grille</td>
+        </tr>
+        <tr>
+            <td>Erreur parsing grille</td>
+            <td>Protocole serveur modifié</td>
+            <td>Comparer avec version serveur synave/peche_aux_moules</td>
+        </tr>
+        <tr>
+            <td>Python version trop ancienne</td>
+            <td>Python < 3.8</td>
+            <td>Mettre à jour Python</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="warning">
+        Pour debug avancé : ajouter <code>print(grille)</code> dans le parser ou activer mode verbose dans le code.
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="securite">10. Sécurité</h2>
+
+    <ul>
+        <li>Connexion sortante uniquement (pas de port entrant)</li>
+        <li>Aucune authentification forte (nom d'équipe seulement)</li>
+        <li><strong>Recommandations :</strong>
+            <ul>
+                <li>Ne pas exposer le serveur de jeu sur Internet sans VPN / reverse-proxy</li>
+                <li>Utiliser un firewall limitant les IP sortantes</li>
+                <li>Ne jamais commiter <code>.env</code></li>
+                <li>Sur serveur partagé : lancer sous utilisateur dédié (non-root)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2 id="performances">11. Optimisation des Performances</h2>
+
+    <ul>
+        <li>Pathfinding : BFS reste < 100-200 ms même sur grandes grilles (grâce à arrêt anticipé)</li>
+        <li>Mémoire : < 50 Mo (grille + états limités)</li>
+        <li>Optimisations possibles :
+            <ul>
+                <li>Cache des chemins calculés</li>
+                <li>Pruning agressif des cibles trop éloignées</li>
+                <li>Multithreading léger pour simulations parallèles (non implémenté)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2 id="annexes">12. Annexes</h2>
+
+    <h3>12.1 Exemple Complet de .env</h3>
+    <pre>
+# ────────────────────────────────────────────────
+# MouleHunter - Fichier .env
+# ────────────────────────────────────────────────
+
+SERVEUR_IP=127.0.0.1
+SERVEUR_PORT=12345
+NOM_EQUIPE=GodMoules2026
+        </pre>
+
+    <h3>12.2 Symboles du Jeu (référence serveur)</h3>
+    <ul>
+        <li><code>Mu</code> / <code>#</code> : Mur</li>
+        <li><code>0-9</code> : Moule (valeur)</li>
+        <li><code>Bs</code> : Bonus Frites</li>
+        <li><code>Bp</code> : Bonus Bière</li>
+        <li><code>Te</code> : Case vide / traversable</li>
+    </ul>
+
+    <h3>12.3 Liens Utiles</h3>
+    <ul>
+        <li>Serveur de référence : <a href="https://github.com/synave/peche_aux_moules">https://github.com/synave/peche_aux_moules</a></li>
+        <li>Dépot du projet : <a href="https://github.com/Thenoob24/MouleHunter">https://github.com/Thenoob24/MouleHunter</a></li>
+        <li>Documentation GitHub Pages (si activée) : https://Thenoob24.github.io/MouleHunter/</li>
+    </ul>
+
+    <div class="footer">
+        <p>Documentation Administrateur – MouleHunter v1.0.0 | © Constant BLASZYK 2026 | Licence MIT</p>
+    </div>
+
+</body>
+</html>
